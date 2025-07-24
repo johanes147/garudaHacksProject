@@ -18,7 +18,7 @@ function displayCurrentCard() {
         </div>
         <div class="card-content">
             <div class="card-love-text">
-                Aku suka <span class="card-love-line"></span>
+                Kunjungi <span class="card-love-line"></span>
             </div>
             <h3 class="card-title">${destination.name}</h3>
             <p class="card-description">${destination.description}</p>
