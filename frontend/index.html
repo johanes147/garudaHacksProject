@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Travel Match Indonesia</title>
+    
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/form.css">
+    <link rel="stylesheet" href="css/swipe.css">
+    <link rel="stylesheet" href="css/matches.css">
+    <link rel="stylesheet" href="css/chat.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>✈️ Travel Match Indonesia</h1>
+            <p>Temukan teman perjalanan untuk jelajahi Indonesia</p>
+        </div>
+
+        <!-- Progress Bar -->
+        <div class="progress-bar">
+            <div class="progress-fill" id="progressFill"></div>
+        </div>
+
+        <!-- Form Screen -->
+        <div class="screen active" id="formScreen">
+            <div class="setup-form">
+                <h2>Ayo Mulai Petualangan!</h2>
+                
+                <div class="form-group">
+                    <label for="userName">Nama Anda:</label>
+                    <div class="input-container">
+                        <div class="input-icon">👤</div>
+                        <input type="text" id="userName" placeholder="Masukkan nama Anda" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="departure">Kota Keberangkatan:</label>
+                    <div class="input-container">
+                        <div class="input-icon">🏙️</div>
+                        <select id="departure" required>
+                            <option value="">Pilih kota keberangkatan</option>
+                            <option value="Jakarta">Jakarta</option>
+                            <option value="Surabaya">Surabaya</option>
+                            <option value="Medan">Medan</option>
+                            <option value="Bandung">Bandung</option>
+                            <option value="Makassar">Makassar</option>
+                            <option value="Semarang">Semarang</option>
+                            <option value="Palembang">Palembang</option>
+                            <option value="Batam">Batam</option>
+                            <option value="Denpasar">Denpasar</option>
+                            <option value="Yogyakarta">Yogyakarta</option>
+                            <option value="Balikpapan">Balikpapan</option>
+                            <option value="Manado">Manado</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="travelMonth">Bulan Perjalanan:</label>
+                    <div class="input-container">
+                        <div class="input-icon">📅</div>
+                        <select id="travelMonth" required>
+                            <option value="">Pilih bulan</option>
+                            <option value="Januari">Januari</option>
+                            <option value="Februari">Februari</option>
+                            <option value="Maret">Maret</option>
+                            <option value="April">April</option>
+                            <option value="Mei">Mei</option>
+                            <option value="Juni">Juni</option>
+                            <option value="Juli">Juli</option>
+                            <option value="Agustus">Agustus</option>
+                            <option value="September">September</option>
+                            <option value="Oktober">Oktober</option>
+                            <option value="November">November</option>
+                            <option value="Desember">Desember</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="budget">Kisaran Budget (IDR):</label>
+                    <div class="input-container">
+                        <div class="input-icon">💰</div>
+                        <select id="budget" required>
+                            <option value="">Pilih budget</option>
+                            <option value="0-2jt">0 - 2 Juta</option>
+                            <option value="2-5jt">2 - 5 Juta</option>
+                            <option value="5-10jt">5 - 10 Juta</option>
+                            <option value="10jt+">10 Juta+</option>
+                        </select>
+                    </div>
+                </div>
+
+                <button class="btn" onclick="startSwiping()">MULAI CARI DESTINASI</button>
+            </div>
+        </div>
+
+        <!-- Swipe Screen -->
+        <div class="screen" id="swipeScreen">
+            <div class="swipe-screen-content">
+                <h2>Swipe Destinasi Impian Anda</h2>
+                <div class="card-stack" id="cardStack"></div>
+                <div class="swipe-instructions">
+                    <p>Geser kartu untuk memilih destinasi</p>
+                    <div class="swipe-hint">
+                        <div class="swipe-hint-item">
+                            <div class="swipe-hint-icon reject">✕</div>
+                            <span>Lewati</span>
+                        </div>
+                        <div class="swipe-hint-item">
+                            <div class="swipe-hint-icon like">♥</div>
+                            <span>Suka</span>
+                        </div>
+                    </div>
+                </div>
+                <div id="swipeComplete" class="empty-state" style="display: none;">
+                    <h3>🎉 Pilihan yang bagus!</h3>
+                    <p>Kami sedang mencari teman perjalanan Anda...</p>
+                    <button class="btn" onclick="showMatches()">Lihat Kecocokan</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Matches Screen -->
+        <div class="screen" id="matchScreen">
+            <button class="btn back-btn" onclick="goBack()">← Kembali ke Swipe</button>
+            <h2>Kecocokan Anda</h2>
+            <div id="matchesList" class="matches-list"></div>
+        </div>
+
+        <!-- Chat Screen -->
+        <div class="screen" id="chatScreen">
+            <button class="btn back-btn" onclick="showMatches()">← Kembali ke Kecocokan</button>
+            <div class="chat-screen-content">
+                <div class="chat-panel">
+                    <div class="chat-user-list-panel">
+                        <div class="add-group-btn">
+                            <h4>Grup Anda</h4>
+                            <a href="#" class="open-grp" onclick="showOtherDestinationGroups()" title="Cari grup lain dengan destinasi yang sama">+</a>
+                        </div>
+                        <ul class="chat-list" id="chatGroupList"></ul>
+                    </div>
+                    <div class="chat-user-message-panel">
+                        <div class="user-select-panel">
+                            <div class="chat-detail">
+                                <div class="chat-detail-left">
+                                    <div class="chat-profile-user" id="currentChatAvatar"></div>
+                                    <div class="chat-user-info">
+                                        <div class="chat-user-nm" id="currentChatName">Pilih grup untuk mulai chat</div>
+                                        <div class="chat-desc" id="currentChatDesc">Klik grup di sebelah kiri</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="msg-conversation" id="chatMessages">
+                            <div class="empty-state">
+                                <h3>💬 Selamat Datang!</h3>
+                                <p>Pilih grup travel untuk mulai mengobrol dengan teman perjalanan Anda</p>
+                            </div>
+                        </div>
+                        <div class="write-comment">
+                            <div class="file-upload-btn">
+                                <input type="file" id="fileInput" style="display: none;">
+                                <label for="fileInput" style="cursor: pointer; margin: 0;">📎</label>
+                            </div>
+                            <div class="message-input-group">
+                                <input type="text" id="messageInput" placeholder="Ketik /ask untuk bertanya ke AI atau tulis pesan..." onkeypress="handleEnter(event)">
+                                <button class="send-btn" onclick="sendMessage()">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                                        <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="travel-recommendations">
+                            <h3>Opsi Perjalanan</h3>
+                            <div id="travelOptions">
+                                <div class="empty-state">
+                                    <p>Opsi perjalanan akan muncul setelah Anda bergabung dengan grup</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript Files -->
+    <script src="js/app.js"></script>
+    <script src="js/form.js"></script>
+    <script src="js/swipe.js"></script>
+    <script src="js/matches.js"></script>
+    <script src="js/chat.js"></script>
+</body>
+</html>
