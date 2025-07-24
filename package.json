@@ -1,0 +1,13 @@
+{
+  "name": "travel-match-indonesia",
+  "version": "1.0.0",
+  "description": "A travel companion matching app",
+  "main": "backend/server.js",
+  "scripts": {
+    "start": "node backend/server.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "mongoose": "^7.5.0"
+  }
+}
