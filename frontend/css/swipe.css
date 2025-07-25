@@ -32,6 +32,7 @@
     transition: transform 0.3s ease;
     overflow: hidden;
     z-index: 2;
+    cursor: pointer
 }
 
 .destination-card:before {

@@ -16,7 +16,7 @@ const destinations = [
         province: "Sumatera Utara", 
         emoji: "🏔️", 
         description: "Danau vulkanis terbesar di dunia dengan Pulau Samosir di tengahnya",
-        image: "https://images.unsplash.com/photo-1571077454467-6c26863f9c1c?w=400&h=250&fit=crop"
+        image: "https://images.pexels.com/photos/1601513/pexels-photo-1601513.jpeg"
     },
     { 
         id: 2, 
@@ -24,7 +24,7 @@ const destinations = [
         province: "Jawa Tengah", 
         emoji: "🛕", 
         description: "Candi Buddha terbesar di dunia, warisan UNESCO",
-        image: "https://images.unsplash.com/photo-1555400081-1eaea6d6e4d4?w=400&h=250&fit=crop"
+        image: "https://images.pexels.com/photos/18566202/pexels-photo-18566202.jpeg"
     },
     { 
         id: 3, 
@@ -32,7 +32,7 @@ const destinations = [
         province: "Nusa Tenggara Barat", 
         emoji: "🏎️", 
         description: "Destinasi pantai dengan sirkuit MotoGP dan budaya Sasak",
-        image: "https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=400&h=250&fit=crop"
+        image: "https://images.pexels.com/photos/30013786/pexels-photo-30013786.jpeg"
     },
     { 
         id: 4, 
@@ -40,7 +40,7 @@ const destinations = [
         province: "Nusa Tenggara Timur", 
         emoji: "🦎", 
         description: "Pintu gerbang menuju Taman Nasional Komodo dan wisata bahari",
-        image: "https://images.unsplash.com/photo-1537953773345-d172ccf13cf1?w=400&h=250&fit=crop"
+        image: "https://images.pexels.com/photos/12376211/pexels-photo-12376211.jpeg"
     },
     { 
         id: 5, 
@@ -56,8 +56,8 @@ const destinations = [
         name: "Yogyakarta", 
         province: "Daerah Istimewa Yogyakarta", 
         emoji: "🏛️", 
-        description: "Kota budaya dengan Kraton, Malioboro, dan kuliner khas",
-        image: "https://images.unsplash.com/photo-1678062768515-25ac652db3b7?w=400&h=250&fit=crop"
+        description: "Kota budaya dengan Kraton, Malioboro, pantai dan kuliner khas",
+        image: "https://images.unsplash.com/photo-1687677347201-4fb42183f98c?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
     },
     { 
         id: 7, 
@@ -73,7 +73,7 @@ const destinations = [
         province: "Jawa Timur", 
         emoji: "🌋", 
         description: "Gunung berapi aktif dengan sunrise spektakuler",
-        image: "https://images.unsplash.com/photo-1605640840605-14ac1855827b?w=400&h=250&fit=crop"
+        image: "https://images.pexels.com/photos/20139557/pexels-photo-20139557.jpeg"
     },
     { 
         id: 9, 
@@ -105,7 +105,7 @@ const destinations = [
         province: "Maluku Utara", 
         emoji: "🛩️", 
         description: "Pulau bersejarah dengan pantai eksotis dan situs Perang Dunia II",
-        image: "https://images.unsplash.com/photo-1571077454467-6c26863f9c1c?w=400&h=250&fit=crop"
+        image: "https://images.unsplash.com/photo-1542163846-abf6a9fe52e2?q=80&w=2832&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
     }
 ];
 
