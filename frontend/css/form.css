@@ -104,6 +104,16 @@
     background: white;
 }
 
+input[type="range"] {
+    width: 70%;
+    margin-right: 10px;
+}
+
+.input-container span {
+    min-width: 90px;
+    display: inline-block;
+}
+
 @media (max-width: 480px) {
     .setup-form {
         padding: 20px;
