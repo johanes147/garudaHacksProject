@@ -119,6 +119,9 @@ function displayCurrentCard() {
 
     cardDrag.addEventListener('mousedown', startDrag);
     cardDrag.addEventListener('touchstart', startDrag);
+    card.addEventListener('dblclick', () => {
+    showReelsScreen(destination);
+    });
 }
 
 function swipeRight() {
@@ -152,3 +155,107 @@ function goBack() {
     updateProgress(50);
     displayCurrentCard();
 }
+
+ function showReelsScreen(destination) {
+    // Save current card state
+    window.tempCardState = {
+        index: currentDestinationIndex,
+        destination: destination
+    };
+    
+    const reelsScreen = document.getElementById('reelsScreen');
+    reelsScreen.innerHTML = `
+        <div class="reels-header">
+            <button class="btn back-btn" onclick="returnToCard()">← Kembali</button>
+            <h2>${destination.name}</h2>
+        </div>
+        <div class="reels-container" id="reelsContainer">
+            <div class="loading">Loading videos...</div>
+        </div>
+    `;
+    
+    showScreen('reelsScreen');
+    loadDestinationReels(destination.name);
+}
+
+function loadDestinationReels(destinationName) {
+    const tiktokVideos = {
+        "Danau Toba" : {
+            username: "pariwisatasumatera",
+            ID: "7528993850057084166",
+        },   
+        "Borobudur" : {
+            username: "wisatakelilingjogja",
+            ID: "7478912338721082630",
+        },
+        "Bali" : {
+            username: "bintiloddonpaketasyid",
+            ID: "7316140384235670789",
+        },
+        "Yogyakarta" : { 
+            username:"davidstwnn",
+            ID: "7280798673016016133"
+        },
+        "Mandalika" : { 
+            username: "_mixmik",
+            ID: "7374339825580707078"
+        },
+        "Lombok" : {
+            username: "itz.wifaaa",
+            ID: "7371418952037141766"
+        },
+        "Morotai" : {
+            username: "arya.ditaaa",
+            ID: "7523465361350577464"
+        },
+        "Raja Ampat" : {
+            username: "urdreamescape",
+            ID: "7513144754805230856"
+        },
+        "Likupang" : {
+            username: "lhs189",
+            ID: "7469359514165234999"
+        },
+        "Tanjung Kelayang" : {
+            username: "loesvirnando",
+            ID: "729160056134495770"
+        },
+        "Wakatobi" : {
+            username: "pesonawakatobi.id",
+            ID: "7402849823931550981"
+        },
+        "Bromo Tengger Semeru" : {
+            username: "inisiapayangkepo",
+            ID: "7526820008316407046"
+        }
+    }
+
+    const videoId = tiktokVideos[destinationName] || []; 
+
+    reelsContainer.innerHTML = videoId.username
+    reelsContainer.innerHTML = `
+        <blockquote class="tiktok-embed"
+            cite="https://www.tiktok.com/@${videoId.username}/video/${videoId.ID}"
+            data-video-id="${videoId.ID}"
+            style="max-width: 605px; min-width: 325px;">
+            <section>
+            <a target="_blank" title="@${videoId.username}" href="https://www.tiktok.com/@${videoId.username}?refer=embed">@${videoId.username}</a>
+            </section>
+        </blockquote>
+    `;
+
+    // Reload TikTok embed script to properly load the new video
+    if (window.tiktokEmbed) {
+        window.tiktokEmbed.reload();
+    }
+}
+
+function returnToCard() {
+    if (window.tempCardState) {
+        currentDestinationIndex = window.tempCardState.index;
+        showScreen('swipeScreen');
+        displayCurrentCard();
+        window.tempCardState = null;
+    }
+}
+
