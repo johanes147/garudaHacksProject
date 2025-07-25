@@ -4,14 +4,15 @@ function startSwiping() {
     const name = document.getElementById('userName').value.trim();
     const departure = document.getElementById('departure').value;
     const travelMonth = document.getElementById('travelMonth').value;
-    const budget = document.getElementById('budget').value;
+    const travelBudgetValue = document.getElementById('travelBudget').value;
+    const accommodationbBudgetValue = document.getElementById('accommodationBudget').value;
 
-    if (!name || !departure || !travelMonth || !budget) {
+    if (!name || !departure || !travelMonth || !travelBudgetValue || !accommodationbBudgetValue) {
         alert('Mohon lengkapi semua kolom');
         return;
     }
 
-    currentUser = { name, departure, travelMonth, budget };
+    currentUser = { name, departure, travelMonth, travelBudgetValue, accommodationbBudgetValue};
     
     showScreen('swipeScreen');
     updateProgress(50);
